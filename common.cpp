@@ -35,3 +35,24 @@ std::vector<std::string> split(std::string const &str, const char delim) {
 
   return out;
 }
+
+std::vector<std::string> splitByWhitespace(std::string const &str) {
+  std::stringstream ss(str);
+  std::vector<std::string> out{};
+
+  std::string s{};
+  while (std::getline(ss, s, ' ')) {
+    if (s.length() > 0) {
+      out.push_back(s);
+    }
+  }
+
+  return out;
+}
+
+void printVecStr(std::vector<std::string> s, std::string sep) {
+  for (auto x: s) {
+    std::cout << x << sep;
+  }
+  std::cout << std::endl;
+}
