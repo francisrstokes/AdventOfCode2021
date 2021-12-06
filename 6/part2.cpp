@@ -1,5 +1,6 @@
 #include "../common.hpp"
 #include <cstdint>
+#include <numeric>
 
 using std::vector;
 
@@ -30,11 +31,7 @@ int main() {
     ages[8] += zeros;
   }
 
-  uint64_t total {};
-  for (auto age : ages) {
-    total += age;
-  }
-
+  uint64_t total = std::accumulate(ages.begin(), ages.end(), 0UL);
   std::cout << total << std::endl;
 
   return 0;
