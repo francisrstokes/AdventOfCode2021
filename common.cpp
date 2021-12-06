@@ -36,6 +36,25 @@ std::vector<std::string> split(std::string const &str, const char delim) {
   return out;
 }
 
+std::vector<std::string> split(std::string const &str, std::string const delim) {
+  std::string s {str};
+  std::vector<std::string> out {};
+
+  auto start = 0U;
+  auto end = s.find(delim);
+  while (end != std::string::npos) {
+    out.push_back(s.substr(start, end - start));
+    start = end + delim.length();
+    end = s.find(delim, start);
+  }
+
+  if (start < s.size() - 1) {
+    out.push_back(s.substr(start, end - start));
+  }
+
+  return out;
+}
+
 std::vector<std::string> splitByWhitespace(std::string const &str) {
   std::stringstream ss(str);
   std::vector<std::string> out{};
